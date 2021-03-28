@@ -1,17 +1,15 @@
-import React from 'react';
-import { Row, Col, Button, DatePicker } from 'antd';
+import React, { useEffect, useState } from 'react';
+
+import Header from './components/Header';
+import Contents from './components/Contents';
 
 const App = () => {
+  const [activeTab, setActiveTab] = useState('default');
+
   return (
     <div>
-      <Row>
-        <h3>TODO LIST APP</h3>
-      </Row>
-      <Row>
-        <Col>
-          <Button>TODO LIST</Button>
-        </Col>
-      </Row>
+      <Header activeTab={activeTab} />
+      <Contents activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
 };

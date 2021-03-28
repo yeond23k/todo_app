@@ -1,0 +1,27 @@
+.header {
+  /* display: block; */
+  background-color: #00474f;
+  height: 80px;
+  margin-bottom: 1px;
+}
+
+.header_content {
+  /* display: block; */
+  height: 35px;
+  padding: 1px;
+}
+
+.day {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffb8;
+}
+
+.date {
+  font-size: 18px;
+  color: #ffffb8;
+}
+
+.taskBox {
+  width: 400px;
+}

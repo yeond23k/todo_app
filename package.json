@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
@@ -30,7 +32,9 @@
       "react/jsx-filename-extension": 0,
       "react/jsx-one-expression-per-line": 0,
       "arrow-body-style": 0,
-      "no-unused-vars": 0
+      "no-unused-vars": 0,
+      "react/prop-types": 0,
+      "react/jsx-boolean-value": 0
     },
     "env": {
       "browser": true

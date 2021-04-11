@@ -6,14 +6,19 @@ import moment from 'moment';
 const Buttons = ['Calendar', 'Today', 'Tomorrow', 'None'];
 
 const TaskOption = (props) => {
-  const { optionVisible, setOptionVisible, taskChangeEvent } = props;
+  const {
+    optionVisible,
+    setOptionVisible,
+    onTaskChangeEvent,
+    onTaskSaveEvent,
+  } = props;
 
   const [selectBtn, setSelectedBtn] = useState('None');
   const [calVisible, setCalVisible] = useState(false);
   const [pinned, setPinned] = useState(false);
 
   useEffect(() => {
-    taskChangeEvent('pinned', pinned);
+    onTaskChangeEvent('pinned', pinned);
   }, [pinned]);
 
   const onClickEvent = (type) => {
@@ -22,16 +27,19 @@ const TaskOption = (props) => {
     if (type === 'Calendar') {
       setCalVisible(true);
     } else if (type === 'Today') {
-      taskChangeEvent('dueDate', moment().format('YYYY-MM-DD'));
+      onTaskChangeEvent('dueDate', moment().format('YYYY-MM-DD'));
     } else if (type === 'Tomorrow') {
-      taskChangeEvent('dueDate', moment().add(1, 'days').format('YYYY-MM-DD'));
+      onTaskChangeEvent(
+        'dueDate',
+        moment().add(1, 'days').format('YYYY-MM-DD'),
+      );
     } else if (type === 'None') {
-      taskChangeEvent('dueDate', '');
+      onTaskChangeEvent('dueDate', '');
     }
   };
 
   const onSelectCalendar = (date) => {
-    taskChangeEvent('dueDate', moment(date).format('YYYY-MM-DD'));
+    onTaskChangeEvent('dueDate', moment(date).format('YYYY-MM-DD'));
     setCalVisible(false);
   };
 
@@ -68,7 +76,7 @@ const TaskOption = (props) => {
         </Col>
       </Row>
       <Row>
-        <Button>ADD</Button>
+        <Button onClick={onTaskSaveEvent}>ADD</Button>
       </Row>
       <Row>
         <Drawer

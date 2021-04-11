@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, Button, Col } from 'antd';
 import './Contents.css';
 
@@ -12,8 +12,32 @@ const Contents = (props) => {
     { key: '2', title: '일상' },
   ]);
 
+  useEffect(() => {
+    console.log('### content render');
+
+    getJsonData();
+  }, []);
+
   const tabChangeEvent = (value) => {
     setActiveTab(value);
+  };
+
+  const getJsonData = async () => {
+    let result = null;
+    await fetch('../data/todoList.json')
+      .then((response) => {
+        console.log('### response => ', response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log('### json => ', json);
+        result = json;
+      });
+    // const result = await fetch('../data/todoList.json').then((data) => {
+    //   return data;
+    //   // console.log('### data => ', data.json());
+    // });
+    console.log('### result => ', result);
   };
 
   return (

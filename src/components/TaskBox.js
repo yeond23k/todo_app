@@ -20,14 +20,18 @@ const TaskBox = (props) => {
     console.log('### task => ', task);
   }, [task]);
 
-  const taskChangeEvent = (type, value) => {
+  const onTaskChangeEvent = (type, value) => {
     setTask((prevState) => {
       return { ...prevState, [type]: value };
     });
   };
 
-  const taskPressEnterEvent = () => {
+  const onTaskPressEnterEvent = () => {
     setOptionVisible(true);
+  };
+
+  const onTaskSaveEvent = () => {
+    console.log('### onTaskSaveEvent => ', task);
   };
 
   return (
@@ -36,18 +40,19 @@ const TaskBox = (props) => {
         <Input
           ref={taskRef}
           placeholder=" + add a new task"
-          onChange={(e) => taskChangeEvent('content', e.target.value)}
-          onPressEnter={taskPressEnterEvent}
+          onChange={(e) => onTaskChangeEvent('content', e.target.value)}
+          onPressEnter={onTaskPressEnterEvent}
         />
       </Col>
       <Col span={4}>
-        <Button onClick={taskPressEnterEvent}>ADD</Button>
+        <Button onClick={onTaskPressEnterEvent}>ADD</Button>
       </Col>
 
       <TaskOption
         optionVisible={optionVisible}
         setOptionVisible={setOptionVisible}
-        taskChangeEvent={taskChangeEvent}
+        onTaskChangeEvent={onTaskChangeEvent}
+        onTaskSaveEvent={onTaskSaveEvent}
       />
     </>
   );
